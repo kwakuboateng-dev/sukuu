@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sukuu Activation Email</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Link to the external CSS file -->
+</head>
+
+<body>
+  <div class="email-wrapper">
+    <div class="email-header">
+      <h1>Welcome to <span class="sukuu-learning">Sukuu Learning</span></h1>
+    </div>
+    <div class="email-body">
+      <h1>Hi <span class="user-name">
+          <%= user.name %>
+        </span>,</h1>
+      <p>Thanks for signing up for Sukuu Learning! We're excited to have you as an early user.</p>
+      <p>Before we get started, we just need to confirm that this is you. Use this activation code:</p>
+      <h2 class="activation-code">
+        <%= activationCode %>
+      </h2>
+      <p>Please enter this code on the activation page. The code will expire in 5 minutes.</p>
+      <p>If you didn't sign up for Sukuu, you can safely ignore this email.</p>
+      <p>Thanks,<br />The Sukuu Team</p>
+    </div>
+    <div class="email-footer">
+      <p>You received this email because you signed up for Sukuu. If you didn't sign up, you can safely ignore this
+        email.</p>
+      <p>© 2023 Sukuu, Inc. All rights reserved. Sukuu is a registered trademark of Sukuu, Inc.</p>
+      <p>If you have any questions, please don't hesitate to contact us at <a
+          href='mailto:support@sukuu.com'>support@sukuu.com</a></p>
+    </div>
+  </div>
+</body>
+
+</html>
