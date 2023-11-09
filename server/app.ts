@@ -3,6 +3,8 @@ import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { ErrorMiddleware } from './middleware/error';
+import userRouter from './routes/user.route';
+
 
 export const app = express();
 
@@ -19,6 +21,10 @@ app.use(cors(
     origin: process.env.ORIGIN || 'http://localhost:3000'
   }
 ));
+
+
+// Routes
+app.use('/api/v1', userRouter);
 
 
 // Test route
