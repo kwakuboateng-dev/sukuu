@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sukuu Activation Email</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* styles.css */
+    /* Base */
+    body {
+      margin: 0;
+      padding: 0;
+      min-width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      background-color: #FAFAFA;
+      color: #222222;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+
+    table td {
+      vertical-align: top;
+    }
+
+    /* Layout */
+    .email-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .email-header {
+      background-color: #2f537b;
+      color: #FFFFFF;
+      padding: 24px;
+    }
+
+    .email-body {
+      padding: 24px;
+      background-color: #FFFFFF;
+    }
+
+    .email-footer {
+      padding: 24px;
+      background-color: #F6F6F6;
+    }
+
+    /* Specific Class Styling */
+    .sukuu-learning {
+      color: #F6F6F6;
+    }
+
+    .user-name {
+      /* Any specific styling for user's name */
+      font-size: 14px;
+      color: #0070f3;
+      text-transform: capitalize;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .activation-code {
+      font-size: 28px;
+      color: #0070f3;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    /* Buttons */
+    .button {
+      display: inline-block;
+      background-color: #0070f3;
+      color: #FFFFFF;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      padding: 12px 24px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-wrapper">
+    <div class="email-header">
+      <h1>Welcome to <span class="sukuu-learning">Sukuu Learning</span></h1>
+    </div>
+    <div class="email-body">
+      <p>Hi <span class="user-name">
+          <%= user.name %>,
+        </span></p>
+      <p>Thanks for signing up for Sukuu Learning! We're excited to have you as an early user.</p>
+      <p>Before we get started, we just need to confirm that this is you. Use this activation code:</p>
+      <h2 class="activation-code">
+        <%= activationCode %>
+      </h2>
+      <p>Please enter this code on the activation page. The code will expire in 5 minutes.</p>
+      <p>If you didn't sign up for Sukuu, you can safely ignore this email.</p>
+      <p>Thanks,<br />The Sukuu Team</p>
+    </div>
+    <div class="email-footer">
+      <p>You received this email because you signed up for Sukuu. If you didn't sign up, you can safely ignore this
+        email.</p>
+      <p>© 2023 Sukuu, Inc. All rights reserved. Sukuu is a registered trademark of Sukuu, Inc.</p>
+      <p>If you have any questions, please don't hesitate to contact us at <a
+          href='mailto:support@sukuu.com'>support@sukuu.com</a></p>
+    </div>
+  </div>
+</body>
+
+</html>
