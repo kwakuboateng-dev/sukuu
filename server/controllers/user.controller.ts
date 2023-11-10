@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import userModel, { IUser } from '../models/user.model';
-import { CatchAsyncError } from '../middleware/catchAsyncError';
+import { CatchAsyncError } from '../middleware/catchAsyncErrors';
 import ErrorHandler from '../utils/ErrorHandler';
 import jwt, { Secret } from 'jsonwebtoken';
 import ejs from 'ejs';
@@ -8,6 +8,7 @@ import path from 'path';
 import sendMail from '../utils/sendMail';
 import 'dotenv/config';
 import { sendToken } from '../utils/jwt';
+import { redis } from '../utils/redis';
 
 // Register a user => /api/v1/register
 interface IRegistrationBody {
@@ -157,6 +158,8 @@ export const logoutUser = CatchAsyncError(async (req: Request, res: Response, ne
   try {
     res.cookie('access_token', "", { maxAge: 1 });
     res.cookie('refresh_token', "", { maxAge: 1 });
+    const userId = req.user?._id || '';
+    redis.del(userId);
     res.status(200).json({
       success: true,
       message: 'Logged out successfully',
