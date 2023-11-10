@@ -9,6 +9,7 @@ import sendMail from '../utils/sendMail';
 import 'dotenv/config';
 import { accessTokenOptions, refreshTokenOptions, sendToken } from '../utils/jwt';
 import { redis } from '../utils/redis';
+import { getUserById } from '../services/user.service';
 
 // Register a user => /api/v1/register
 interface IRegistrationBody {
@@ -203,6 +204,17 @@ export const updateAccessToken = CatchAsyncError(async (req: Request, res: Respo
       accessToken,
     });
 
+  } catch (error) {
+    return next(new ErrorHandler(error.message, 400));
+  }
+});
+
+
+// get user info
+export const getUserInfo = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const userId = req.user?._id;
+    getUserById(userId, res);
   } catch (error) {
     return next(new ErrorHandler(error.message, 400));
   }
